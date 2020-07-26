@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="10dp"
+    app:cardBackgroundColor="@color/search_bar"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saturday"
+            android:layout_weight="1"
+            android:fontFamily="@font/san_fransisco_bold"
+            android:textSize="20sp"
+            android:textColor="@color/edit_text_color"/>
+
+        <TextView
+            android:id="@+id/weather"
+            android:layout_gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:layout_weight="1"
+            android:fontFamily="@font/san_fransisco_bold"
+            android:textSize="20sp"
+            android:textColor="@color/edit_text_color"/>
+
+
+        <ImageView
+            android:id="@+id/weatherImage"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_filter_vintage_black" />
+
+
+        <TextView
+            android:id="@+id/humidity"
+            android:gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="78/8%"
+            android:layout_weight="1"
+            android:fontFamily="@font/san_fransisco_bold"
+            android:textSize="20sp"
+            android:textColor="@color/edit_text_color"/>
+
+        <TextView
+            android:id="@+id/temperature"
+           android:gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15.73°C"
+            android:layout_weight="1"
+            android:fontFamily="@font/san_fransisco_bold"
+            android:textSize="20sp"
+            android:textColor="@color/edit_text_color"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weatherList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/weather_attribute_item_list"/>
+
+    </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>
