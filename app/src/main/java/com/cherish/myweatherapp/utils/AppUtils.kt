@@ -3,6 +3,7 @@ package com.cherish.myweatherapp.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.util.Log
 import android.widget.Toast
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,6 +15,7 @@ import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.Callable
 
 class AppUtils {
     companion object {
@@ -32,7 +34,7 @@ class AppUtils {
         }
 
         fun getDateString(date: Long): String {
-            return SimpleDateFormat("DD,MM,YYYY", Locale.getDefault()).format(Date(date * 1000L))
+            return SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(date * 1000L))
         }
 
         fun getTimeString(date: String): String {
@@ -66,39 +68,24 @@ class AppUtils {
         }
 
 
-// fun hasInternet() : Single<Boolean> {
-//   return Single.fromCallable(()-{
-//      try {
-//          var timeOutMl = 1500
-//          var socket = Socket()
-//          socket.connect(InetSocketAddress("api.openweathermap.org", 443),timeOutMl)
-//          socket.close()
-//
-//      }catch (e : Exception){
-//          e.printStackTrace()
-//      }
-//
-//   })
-//
-//
-//}
-
-
         fun hasInternet(): Single<Boolean> {
             return Single.fromCallable<Boolean> {
                 try {
-                    val timeoutMs = 1500
+                    val timeoutMs = 2000
                     val socket = Socket()
                     socket.connect(InetSocketAddress("api.openweathermap.org", 443), timeoutMs)
                     socket.close()
-                    return@fromCallable true
+                    Log.i("RESPONSE","RESPONSE")
+                     true
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    return@fromCallable false
+                    Log.i("ERROR","Error")
+                     false
                 }
             }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         }
+
     }
 }

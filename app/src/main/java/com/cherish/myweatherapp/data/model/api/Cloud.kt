@@ -6,10 +6,16 @@ import com.google.gson.annotations.SerializedName
 class Cloud(cloudAll : Int) {
 
     @SerializedName("all")
-    @Expose
+
     var cloudAll :Int? = null
 
     init {
         this.cloudAll = cloudAll
     }
+
+    override fun toString(): String {
+        return "Cloud(cloudAll=$cloudAll)"
+    }
+
+
 }

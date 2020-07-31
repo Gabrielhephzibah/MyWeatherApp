@@ -1,26 +1,42 @@
 package com.cherish.myweatherapp.data.model.api
 
+import android.util.Log
 import java.util.*
+import java.util.Arrays.asList
 import kotlin.collections.ArrayList
 
-class GroupedData(vararg  arg : List<Data>)  {
-    public var dataGroup : ArrayList<List<Data>>? = null
+ class GroupedData @SafeVarargs constructor(vararg  args : List<Data>)  {
 
-    init {
-        this.dataGroup = ArrayList()
-        this.dataGroup!!.addAll(Arrays.asList(*arg))
+    private var dataGroup: ArrayList<List<Data>>? = null
+
+
+
+      init {
+        this.dataGroup = arrayListOf()
+          this.dataGroup!!.addAll(args.toList())
+
+
     }
 
-    fun addData(data :List<Data>){
-        if (dataGroup==null){
-            dataGroup = ArrayList()
+
+    fun addData(data: List<Data>) {
+        if (dataGroup.isNullOrEmpty())
+            dataGroup = java.util.ArrayList()
             dataGroup!!.add(data)
-        }
+
     }
+
+    fun getDataList(): List<List<Data>>? {
+        return dataGroup
+    }
+
+
 
     override fun toString(): String {
-        return "GroupedData(dataGroup=$dataGroup)"
+        return "DataGroup{" +
+                "dataGroup=" + dataGroup +
+                '}'.toString()
     }
-
-
 }
+
+

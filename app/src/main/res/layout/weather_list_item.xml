@@ -5,9 +5,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     app:cardCornerRadius="14dp"
+    android:layout_marginTop="10dp"
     app:cardElevation="10dp"
     app:cardBackgroundColor="@color/search_bar"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -75,12 +76,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="12dp"
         android:layout_below="@+id/top"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
+        android:paddingBottom="10dp"
         android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
+
             android:id="@+id/weatherList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

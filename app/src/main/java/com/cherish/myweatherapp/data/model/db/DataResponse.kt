@@ -15,32 +15,28 @@ import java.util.*
 @Entity(tableName = "weather_forecast")
 class DataResponse(id : Int, name :String, cod :String, ctn : Int, country: String, list : List<Data>, city: City ) {
 
-
-
     @PrimaryKey
     @NotNull
     var id  : Int = 1
 
-    @SerializedName("name")
+
     var  name : String? = null
 
     @SerializedName("cod")
     var  cod : String? = null
 
-
-    @SerializedName("cnt")
-    var  cnt : Int? = null
-
-
     @SerializedName("country")
     var  country : String? = null
 
 
-    @TypeConverters(Converters::class)
+    @SerializedName("cnt")
+    var  cnt : Int? = null
+
+//    @TypeConverters(Converters::class)
     @SerializedName("list")
     var  list : List<Data>? = null
 
-    @TypeConverters(Converters::class)
+//    @TypeConverters(Converters::class)
     @SerializedName("city")
     var  city : City? = null
 
@@ -57,10 +53,11 @@ class DataResponse(id : Int, name :String, cod :String, ctn : Int, country: Stri
         this.city = city
     }
 
-    constructor():this(0,"","",0,"", emptyList<Data>(),City(0," ",""))
+    constructor():this(1,"","",0,"", mutableListOf<Data>(),City(0," ",""))
 
-
-
+    override fun toString(): String {
+        return "DataResponse(id=$id, name=$name, cod=$cod, country=$country, cnt=$cnt, list=$list, city=$city)"
+    }
 
 
 }

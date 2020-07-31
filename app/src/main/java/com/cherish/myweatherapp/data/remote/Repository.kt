@@ -30,7 +30,7 @@ class Repository @Inject constructor(apiService: ApiService,currentDao: CurrentD
         this.schedulerProvider = schedulerProvider
    }
 
-    fun getForecast(cityName: String): Single<retrofit2.Response<DataResponse>>{
+    fun getForecast(cityName: String): Single<Response<DataResponse>>{
     return apiService.getForeCastByCity(cityName,"metric", BuildConfig.APPID)
     }
 

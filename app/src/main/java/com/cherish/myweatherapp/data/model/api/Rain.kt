@@ -4,10 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 class Rain(rainValue: Double) {
     @SerializedName("3h")
-    private
     var rainValue: Double? = null
 
     init {
         this.rainValue = rainValue
     }
+
+    override fun toString(): String {
+        return "Rain(rainValue=$rainValue)"
+    }
+
 }

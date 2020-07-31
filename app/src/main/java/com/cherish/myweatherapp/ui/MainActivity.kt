@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.cherish.myweatherapp.R
 import com.cherish.myweatherapp.fragment.WeatherFragment
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-class MainActivity : AppCompatActivity()  {
+class MainActivity : DaggerAppCompatActivity()  {
     val weatherFragment = WeatherFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {

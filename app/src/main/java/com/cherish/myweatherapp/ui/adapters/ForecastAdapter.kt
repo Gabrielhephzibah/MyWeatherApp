@@ -1,6 +1,7 @@
 package com.cherish.myweatherapp.ui.adapters
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +15,11 @@ import com.cherish.myweatherapp.utils.Constants
 import com.cherish.myweatherapp.utils.GlideApp
 import kotlinx.android.synthetic.main.weather_list_item.view.*
 
-class ForecastAdapter(dataGroup: GroupedData  = GroupedData()) : RecyclerView.Adapter<ForecastAdapter.ForeCastViewHolder>() {
+class ForecastAdapter : RecyclerView.Adapter<ForecastAdapter.ForeCastViewHolder>() {
 
-    lateinit var dataGroup: GroupedData
+    lateinit var data: GroupedData
     init {
-        this.dataGroup = dataGroup
+        this.data = GroupedData()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForeCastViewHolder {
@@ -27,18 +28,27 @@ class ForecastAdapter(dataGroup: GroupedData  = GroupedData()) : RecyclerView.Ad
     }
 
     override fun getItemCount(): Int {
-        return dataGroup.dataGroup!!.size
+
+        Log.i("SIZEOFADAPTER", data.getDataList()!!.size.toString() )
+        return data.getDataList()!!.size
 
     }
 
     override fun onBindViewHolder(holder: ForeCastViewHolder, position: Int) {
-        val data : List<Data> = dataGroup.dataGroup!!.get(position)
-        holder.bind(data)
+        Log.i("Bind data", "Bind Data")
+        val datas : List<Data>  = data.getDataList()!!.get(position)
+        holder.bind(datas)
 
 
     }
 
+    fun  updateData(data : GroupedData){
+        this.data = data
+        notifyDataSetChanged()
+    }
+
     class ForeCastViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+
         val day = itemView.day
         val humidity = itemView.humidity
         val temperature = itemView.temperature
@@ -46,16 +56,21 @@ class ForecastAdapter(dataGroup: GroupedData  = GroupedData()) : RecyclerView.Ad
         val weatherCond = itemView.weather
         val weatherList = itemView.weatherList
 
-
         @SuppressLint("SetTextI18n")
         fun  bind(listData: List<Data>){
-            if (listData.size < 0){
+            Log.i("BIND FUNCTION", listData.toString())
+            if (listData.size > 0){
                 day.setText(AppUtils.getDay(listData.get(0).dtText.toString()))
+                Log.i("Day",AppUtils.getDay(listData.get(0).dtText.toString()))
                 weatherCond.setText(listData.get(0).weather?.get(0)?.main)
+                Log.i("WeatherCond",listData.get(0).weather?.get(0)?.main)
                 humidity.setText("${listData.get(0).main?.humidity}%")
+                Log.i("Himidity","${listData.get(0).main?.humidity}%")
                 temperature.setText("${listData.get(0).main?.temperature}°C")
+                Log.i("Temperature","${listData.get(0).main?.temperature}°C")
+                Log.i("IMAGE URL", "${Constants.IMAGE_URL}${listData.get(0).weather?.get(0)?.icon}.png")
                 GlideApp.with(weatherImage)
-                    .load(" ${Constants.IMAGE_URL+listData.get(0).weather?.get(0)?.icon}.png")
+                    .load("${Constants.IMAGE_URL}${listData.get(0).weather?.get(0)?.icon}.png")
                     .fitCenter()
                     .into(weatherImage)
                 weatherList.layoutManager = LinearLayoutManager(weatherList.context,RecyclerView.HORIZONTAL,false)

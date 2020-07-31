@@ -10,7 +10,7 @@ import io.reactivex.Single
 
 @Dao
 interface ForeCastDao {
-    @Query("select * from weather_forecast")
+    @Query("select * from weather_forecast where id = 1")
     fun  getDataById(): Single<DataResponse>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

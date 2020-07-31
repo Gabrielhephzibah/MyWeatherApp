@@ -16,7 +16,7 @@ interface ApiService {
 
     @GET("weather")
     fun getCurrentWeatherByLatAndLog(@Query("lat")lat : Double,
-                          @Query("long")long: Double,
+                          @Query("lon")long: Double,
                           @Query("units")unit :String,
                             @Query("APPID") key: String ) : Single<Response<CurrentWeatherResponse>>
 
@@ -28,7 +28,7 @@ interface ApiService {
 
     @GET("forecast")
     fun getForecastByLatAndLong(@Query("lat") lat: Double,
-                                @Query ("long") long: Double,
+                                @Query ("lon") long: Double,
                                @Query("units") unit: String,
                                @Query("APPID") key: String) : Single<Response<DataResponse>>
 

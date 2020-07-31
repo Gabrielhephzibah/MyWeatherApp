@@ -6,15 +6,15 @@ import com.google.gson.annotations.SerializedName
  class City(id: Int, name : String, country : String) {
 
     @SerializedName("id")
-    @Expose
+
      var  id : Int? = null
 
     @SerializedName("name")
-    @Expose
+
     var name : String? = null
 
     @SerializedName("country")
-    @Expose
+
     var country :String? = null
 
     init {
@@ -23,4 +23,9 @@ import com.google.gson.annotations.SerializedName
         this.country = country
     }
 
-}
+     override fun toString(): String {
+         return "City(id=$id, name=$name, country=$country)"
+     }
+
+
+ }

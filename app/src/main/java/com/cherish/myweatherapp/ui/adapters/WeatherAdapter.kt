@@ -1,6 +1,7 @@
 package com.cherish.myweatherapp.ui.adapters
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
@@ -47,9 +48,10 @@ class WeatherAdapter(data: List<Data>) : RecyclerView.Adapter<WeatherAdapter.Wea
         @SuppressLint("SetTextI18n")
         fun bind(data: Data){
             forecastTemp.setText("${data.main?.temperature} C")
+            Log.i("WeathersImage","${Constants.IMAGE_URL}${data.weather?.get(0)?.icon}.png")
             GlideApp.with(forecastImage)
-                .load(" ${Constants.IMAGE_URL+data.weather?.get(0)?.icon}.png")
-                .fitCenter()
+                .load("${Constants.IMAGE_URL}${data.weather?.get(0)?.icon}.png")
+
                 .into(forecastImage)
             forcastTime.setText(AppUtils.getTimeString(data.dtText.toString()))
 

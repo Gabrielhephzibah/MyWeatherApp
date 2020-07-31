@@ -24,11 +24,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+            android:id="@+id/editSearch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/search_icon"
             android:drawablePadding="8dp"
+            android:textColorHint="@color/search_icon_color"
             android:hint="@string/edit_text_hint"
             android:imeOptions="actionSearch"
             android:inputType="text"
@@ -68,12 +70,14 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:id="@+id/currentLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="15dp">
 
                     <TextView
+                        android:id="@+id/todayDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="serif"
@@ -95,6 +99,7 @@
                             android:paddingTop="15dp">
 
                             <TextView
+                                android:id="@+id/location"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif"
@@ -104,6 +109,7 @@
 
 
                             <TextView
+                                android:id="@+id/currentTemp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/san_fransisco_regular"
@@ -122,17 +128,29 @@
                             android:orientation="vertical"
                             android:paddingTop="15dp">
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:src="@drawable/cloud_image" />
-
                             <TextView
+                                android:id="@+id/tempCond"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginTop="12dp"
+                                android:textColor="@color/edit_text_color"
+                                android:text="clear"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/san_fransisco_regular"/>
+
+                            <ImageView
+                                android:id="@+id/currentWeatherImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/cloud_image" />
+
+                            <TextView
+                                android:id="@+id/minMaxTemp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:fontFamily="@font/san_fransisco_regular"
                                 android:text="14.4°C/17.22°C"
                                 android:textColor="@color/edit_text_color"
@@ -152,7 +170,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
-
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -167,6 +184,7 @@
                                     android:textSize="14sp" />
 
                                 <TextView
+                                    android:id="@+id/currentHumd"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/san_fransisco_bold"
@@ -192,6 +210,7 @@
                                     android:textSize="14sp" />
 
                                 <TextView
+                                    android:id="@+id/indoorTemp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/san_fransisco_bold"
@@ -227,6 +246,7 @@
                                     android:textSize="14sp" />
 
                                 <TextView
+                                    android:id="@+id/windSpeed"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/san_fransisco_bold"
@@ -253,6 +273,7 @@
                                     android:textSize="14sp" />
 
                                 <TextView
+                                    android:id="@+id/pressure"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/san_fransisco_bold"
@@ -272,7 +293,7 @@
 
                 </LinearLayout>
                 <ProgressBar
-                    android:id="@+id/currentProgress"
+                    android:id="@+id/progressBarOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
@@ -296,7 +317,7 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <ProgressBar
-                android:id="@+id/forecastProgress"
+                android:id="@+id/progressBarTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="145dip"
@@ -308,6 +329,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/weather_item_list"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/weekText"

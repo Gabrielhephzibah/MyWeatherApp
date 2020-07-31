@@ -8,7 +8,7 @@ class WeatherResponse(currentWeatherResponse: CurrentWeatherResponse?, errorMess
     var errorMessage : String? = null
 
     init {
-        this.currentWeatherResponse = currentWeatherResponse;
+        this.currentWeatherResponse = currentWeatherResponse
         this.errorMessage = errorMessage
 
     }

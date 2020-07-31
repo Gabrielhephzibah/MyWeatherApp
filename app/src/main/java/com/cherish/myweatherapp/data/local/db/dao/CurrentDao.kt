@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Dao
 interface CurrentDao {
-    @Query("select * from current_weather")
+    @Query("select * from current_weather where idd = 1")
     fun  getCurrent(): Single<CurrentWeatherResponse>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

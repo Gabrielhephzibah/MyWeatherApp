@@ -5,12 +5,10 @@ import com.google.gson.annotations.SerializedName
 
 class Wind(speed : Double, degree: Double) {
     @SerializedName("speed")
-    @Expose
     var speed :Double? = null
 
 
     @SerializedName("deg")
-    @Expose
     var degree :Double? = null
 
 
@@ -19,7 +17,9 @@ class Wind(speed : Double, degree: Double) {
         this.degree = degree
     }
 
-
+    override fun toString(): String {
+        return "Wind(speed=$speed, degree=$degree)"
+    }
 
 
 }

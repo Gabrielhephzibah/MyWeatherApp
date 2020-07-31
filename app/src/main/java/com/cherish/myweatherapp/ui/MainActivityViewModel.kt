@@ -75,7 +75,7 @@ class MainActivityViewModel @Inject constructor(repository: Repository, schedule
  }
 
 
-    fun getForcastGeo(lat: Double, long: Double) {
+    fun getForeCastGeos(lat: Double, long: Double) {
         disposable.add(repository.getFoecastGeo(lat,long)
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
@@ -141,7 +141,7 @@ class MainActivityViewModel @Inject constructor(repository: Repository, schedule
     }
 
 
-    fun  getWeatherGeo(lat: Double, long: Double){
+    fun  getWeatherGeos(lat: Double, long: Double){
         disposable.add(repository.getweatherGeo(lat,long)
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
@@ -220,12 +220,12 @@ class MainActivityViewModel @Inject constructor(repository: Repository, schedule
     }
 
     fun getForecastGeo(lat:Double,long:Double): LiveData<ForecastResponse>{
-        getForecastGeo(lat,long)
+        getForeCastGeos(lat,long)
         return geoForecastMutableLiveData
     }
 
     fun getCurrentDateGeo(lat: Double,long: Double): LiveData<WeatherResponse>{
-        getWeatherGeo(lat,long)
+        getWeatherGeos(lat,long)
         return geoWeatherMutableLiveData
     }
 

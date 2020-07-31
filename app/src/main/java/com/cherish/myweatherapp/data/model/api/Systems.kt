@@ -5,17 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 class Systems(country: String, sunrise :Int, sunset :Int) {
     @SerializedName("country")
-    @Expose
-    private var country: String? = null
+     var country: String? = null
 
     @SerializedName("sunrise")
-    @Expose
-    private var sunrise: Int? = null
-
+    var sunrise: Int? = null
 
     @SerializedName("sunset")
-    @Expose
-    private var sunset: Int? = null
+     var sunset: Int? = null
 
     init {
         this.country = country
@@ -23,8 +19,9 @@ class Systems(country: String, sunrise :Int, sunset :Int) {
         this.sunset = sunset
     }
 
-
-
+    override fun toString(): String {
+        return "Systems(country=$country, sunrise=$sunrise, sunset=$sunset)"
+    }
 
 
 }
