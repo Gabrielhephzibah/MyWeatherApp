@@ -14,9 +14,15 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import javax.inject.Inject
 
-class MainActivityViewModel @Inject constructor(repository: Repository, schedulerProvider: SchedulerProvider) : ViewModel() {
+class MainActivityViewModel(repository: Repository, schedulerProvider: SchedulerProvider) : ViewModel() {
+
     lateinit var repository : Repository
     lateinit var schedulerProvider: SchedulerProvider
+
+    init {
+        this.repository = repository
+        this.schedulerProvider = schedulerProvider
+    }
 
     private var weatherMutableLiveData : MutableLiveData<WeatherResponse> = MutableLiveData()
 
@@ -28,10 +34,16 @@ class MainActivityViewModel @Inject constructor(repository: Repository, schedule
 
     var  disposable : CompositeDisposable = CompositeDisposable()
 
-    init {
-        this.repository = repository
-        this.schedulerProvider = schedulerProvider
-    }
+//    fun getRepository() :Repository{
+//        return  repository
+//    }
+
+//    fun useSchedularProvider(): SchedulerProvider{
+//        return  schedulerProvider
+//    }
+
+
+
 
 
  fun getForecasts(cityName: String){

@@ -45,12 +45,9 @@ import java.util.jar.Manifest
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
-class WeatherFragment : DaggerFragment() {
-    val LOCATION_REQUEST = 100
+class WeatherFragment : Fragment() {
+    var LOCATION_REQUEST = 100
 
-
-    @Inject
-   lateinit var factory: ViewModelProvider.Factory
     lateinit var viewModel: MainActivityViewModel
     var fusedLocationProviderClient: FusedLocationProviderClient? = null
     lateinit var editSearch: EditText
@@ -82,7 +79,7 @@ class WeatherFragment : DaggerFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.weather_fragment_layout, container, false)
-        viewModel = ViewModelProviders.of(this, factory).get(MainActivityViewModel::class.java)
+        viewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel::class.java)
         return view
     }
 

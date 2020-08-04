@@ -13,20 +13,24 @@ import dagger.Provides
 
 @Module
 class WeatherFragmentModule {
+
     @Provides
     fun  providesViewModel(repository: Repository, schedulerProvider: SchedulerProvider) : MainActivityViewModel{
         return MainActivityViewModel(repository,schedulerProvider)
     }
 
     @Provides
-    fun provideRespository(apiService: ApiService,currentDao: CurrentDao,foreCastDao: ForeCastDao,schedulerProvider: SchedulerProvider): Repository{
+    fun provideRepository(apiService: ApiService,currentDao: CurrentDao,foreCastDao: ForeCastDao,schedulerProvider: SchedulerProvider): Repository{
         return  Repository(apiService,currentDao,foreCastDao,schedulerProvider)
     }
 
+
+
     @Provides
-    fun provideViewModelProvider(mainActivityViewModel: MainActivityViewModel) : ViewModelProvider.Factory{
-        return ViewModelProviderFactory(mainActivityViewModel)
+    fun provideViewModelProvider(repository: Repository,schedulerProvider: SchedulerProvider) : ViewModelProviderFactory{
+        return ViewModelProviderFactory(repository,schedulerProvider)
 
     }
+
 
 }
